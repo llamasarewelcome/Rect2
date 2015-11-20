@@ -10,6 +10,23 @@
 <project name="Rect2" default="default" basedir=".">
     <description>Builds, tests, and runs the project Rect2.</description>
     <import file="nbproject/build-impl.xml"/>
+    
+    <property environment="env" />
+    
+    <taskdef name="bundleapp"
+             classname="com.oracle.appbundler.AppBundlerTask"   
+             classpath="lib/appbundler-1.0.jar" />
+
+    <target name="bundle-app">
+        <bundleapp outputdirectory="dist"
+            name="Rect2"
+            displayname="Rectangle Demo 2"
+            identifier="com.raphaellevy.rect2"
+            mainclassname="com.raphaellevy.rect2.Rect2">
+            <runtime dir="/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home" />
+            <classpath file="dist/Rect2.jar" />
+        </bundleapp>
+    </target>
     <!--
 
     There exist several targets which are by default empty and which can be 
