@@ -32,8 +32,8 @@ public class RectSprite extends Rectangle{
             double[] coords = RPanel.cartToPolar(vx, vy);
             Random r = new Random();
             coords[1] = coords[1] + Math.toRadians((r.nextInt(10)-5)/25);
-            vx = RPanel.polarToCart(coords[0], coords[1])[0];
-            vy = RPanel.polarToCart(coords[0], coords[1])[1];
+            vx = RPanel.polarToCart(coords[0], coords[1])[1];
+            vy = RPanel.polarToCart(coords[0], coords[1])[0];
         }
         else if (touchingTop()) {
             vy = -vy;
