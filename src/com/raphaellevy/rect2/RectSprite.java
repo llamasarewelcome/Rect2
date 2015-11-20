@@ -6,6 +6,9 @@
 package com.raphaellevy.rect2;
 
 import java.awt.Rectangle;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,15 +29,36 @@ public class RectSprite extends Rectangle{
         dy=dy+vy;
         if (touchingBottom()) {
             vy = -vy;
+            double[] coords = RPanel.cartToPolar(vx, vy);
+            Random r = new Random();
+            coords[1] = coords[1] + Math.toRadians((r.nextInt(10)-5)/25);
+            vx = RPanel.polarToCart(coords[0], coords[1])[0];
+            vy = RPanel.polarToCart(coords[0], coords[1])[1];
         }
-        if (touchingTop()) {
+        else if (touchingTop()) {
             vy = -vy;
+            double[] coords = RPanel.cartToPolar(vx, vy);
+            Random r = new Random();
+            coords[1] = coords[1] + ((r.nextInt(10)-5)/25);
+            vx = RPanel.polarToCart(coords[0], coords[1])[0];
+            vy = RPanel.polarToCart(coords[0], coords[1])[1];
+            
         }
-        if (touchingRight()) {
+        else if (touchingRight()) {
             vx = -vx;
+            double[] coords = RPanel.cartToPolar(vx, vy);
+            Random r = new Random();
+            coords[1] = coords[1] + ((r.nextInt(10)-5)/25);
+            vx = RPanel.polarToCart(coords[0], coords[1])[0];
+            vy = RPanel.polarToCart(coords[0], coords[1])[1];
         }
-        if (touchingLeft()) {
+        else if (touchingLeft()) {
             vx = -vx;
+            double[] coords = RPanel.cartToPolar(vx, vy);
+            Random r = new Random();
+            coords[1] = coords[1] + ((r.nextInt(10)-5)/25);
+            vx = RPanel.polarToCart(coords[0], coords[1])[0];
+            vy = RPanel.polarToCart(coords[0], coords[1])[1];
         }
         setLocation((int) (dx),(int) (dy));
     }

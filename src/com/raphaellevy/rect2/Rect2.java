@@ -51,7 +51,7 @@ public class Rect2 {
             p.repaint();
             System.out.print("a");
             
-            Thread.sleep(10);
+            Thread.sleep(1);
             
         }
     }
