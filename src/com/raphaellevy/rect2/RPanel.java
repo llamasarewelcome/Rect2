@@ -36,5 +36,14 @@ public class RPanel extends JPanel{
     
     RectSprite r = new RectSprite(0,0,(int)rsize.x,(int)rsize.y);
     
-    
+    public double[] cartToPolar(double x, double y) {
+        double magnitude = Math.hypot(x, y);
+        double theta = Math.atan2(x, y);
+        return new double[] {magnitude, theta};
+    }
+    public double[] polarToCart(double magnitude, double theta) {
+        double x = magnitude * Math.cos(theta);
+        double y = magnitude * Math.sin(theta);
+        return new double[] {x,y};
+    }
 }
