@@ -26,6 +26,11 @@ public class Rect2 {
     /** Main method */
     public static void main(String[] args) throws InterruptedException {
         Rect2 r = new Rect2();
+//        double[] d = new double[] {3.0,4.0};
+//        double[] e = RPanel.cartToPolar(d[0],d[1]);
+//        double[] f = RPanel.polarToCart(e[0], e[1]);
+//        System.out.println(f[0]);
+//        System.out.println(f[1]);
         r.setup();
         r.loop();
         
@@ -49,9 +54,9 @@ public class Rect2 {
         while (true) {            
             p.move();
             p.repaint();
-            System.out.print("a");
             
-            Thread.sleep(1);
+            
+            Thread.sleep(5);
             
         }
     }

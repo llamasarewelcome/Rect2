@@ -19,6 +19,7 @@ public class RectSprite extends Rectangle{
     double dy = 0;
     double vx = .5;
     double vy = 1;
+    static final double SLOW = .9999;
     RectSprite(int i, int i0, int i1, int i2) {
         super(i,i0,i1,i2);
         dx=i;
@@ -28,39 +29,39 @@ public class RectSprite extends Rectangle{
         dx=dx+vx;
         dy=dy+vy;
         if (touchingBottom()) {
+            System.out.println("b");
             vy = -vy;
-            double[] coords = RPanel.cartToPolar(vx, vy);
-            Random r = new Random();
-            coords[1] = coords[1] + Math.toRadians((r.nextInt(10)-5)/25);
-            vx = RPanel.polarToCart(coords[0], coords[1])[1];
-            vy = RPanel.polarToCart(coords[0], coords[1])[0];
+            randomize();
+            //dy=Rect2.SIZE[1]-this.height;
+            
+            //dy--;
         }
-        else if (touchingTop()) {
+        if (touchingTop()) {
             vy = -vy;
-            double[] coords = RPanel.cartToPolar(vx, vy);
-            Random r = new Random();
-            coords[1] = coords[1] + ((r.nextInt(10)-5)/25);
-            vx = RPanel.polarToCart(coords[0], coords[1])[0];
-            vy = RPanel.polarToCart(coords[0], coords[1])[1];
+            randomize();
+            dy = 1;
             
         }
-        else if (touchingRight()) {
+        if (touchingRight()) {
             vx = -vx;
-            double[] coords = RPanel.cartToPolar(vx, vy);
-            Random r = new Random();
-            coords[1] = coords[1] + ((r.nextInt(10)-5)/25);
-            vx = RPanel.polarToCart(coords[0], coords[1])[0];
-            vy = RPanel.polarToCart(coords[0], coords[1])[1];
+            randomize();
+            dx = Rect2.SIZE[0] - 1 - this.width;
         }
-        else if (touchingLeft()) {
+        if (touchingLeft()) {
             vx = -vx;
-            double[] coords = RPanel.cartToPolar(vx, vy);
-            Random r = new Random();
-            coords[1] = coords[1] + ((r.nextInt(10)-5)/25);
-            vx = RPanel.polarToCart(coords[0], coords[1])[0];
-            vy = RPanel.polarToCart(coords[0], coords[1])[1];
+            randomize();
+            
         }
+        vx=vx*SLOW;
+        vy=vy*SLOW;
         setLocation((int) (dx),(int) (dy));
+    }
+    void randomize() {
+        double[] coords = RPanel.cartToPolar(vx, vy);
+        Random r = new Random();
+        coords[1] = coords[1] + Math.toRadians((r.nextInt(10)-5));
+        vx = RPanel.polarToCart(coords[0], coords[1])[1];
+        vy = RPanel.polarToCart(coords[0], coords[1])[0];
     }
     boolean touchingLeft() {
         boolean a = dx < 1 && vx < 0;

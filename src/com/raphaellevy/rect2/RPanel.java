@@ -5,6 +5,7 @@
  */
 package com.raphaellevy.rect2;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -26,7 +27,9 @@ public class RPanel extends JPanel{
     @Override
     public void paint(Graphics g1) {
         Graphics2D g = (Graphics2D) g1;
-        
+        g.setColor(Color.WHITE);
+        g.fillRect(0, 0, Rect2.SIZE[0], Rect2.SIZE[1]);
+        g.setColor(Color.RED);
         g.fill(r);
     }
     
