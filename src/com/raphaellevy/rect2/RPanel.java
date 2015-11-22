@@ -30,7 +30,7 @@ public class RPanel extends JPanel{
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, Rect2.SIZE[0], Rect2.SIZE[1]);
         g.setColor(Color.RED);
-        g.fill(r);
+        g.fillOval(r.x, r.y, r.width, r.height);
     }
     
     public void move() {
