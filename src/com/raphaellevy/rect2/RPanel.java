@@ -22,6 +22,9 @@ public class RPanel extends JPanel{
     
     public RPanel () {
         super();
+        this.r2 = new RectSprite(250,50 ,(int)rsize.x,(int)rsize.y);
+        r2.vx = -.4;
+        r2.vy = -.4;
         
     }
     @Override
@@ -31,14 +34,17 @@ public class RPanel extends JPanel{
         g.fillRect(0, 0, Rect2.SIZE[0], Rect2.SIZE[1]);
         g.setColor(Color.RED);
         g.fillOval(r.x, r.y, r.width, r.height);
+        g.setColor(Color.BLUE);
+        g.fillOval(r2.x, r2.y, r2.width, r2.height);
     }
     
     public void move() {
         r.move();
+        r2.move();
     }
     
     RectSprite r = new RectSprite(0,0,(int)rsize.x,(int)rsize.y);
-    
+    RectSprite r2;
     public static double[] cartToPolar(double x, double y) {
         double magnitude = Math.hypot(x, y);
         double theta = Math.atan2(x, y);

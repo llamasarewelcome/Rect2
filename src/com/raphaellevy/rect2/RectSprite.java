@@ -88,7 +88,7 @@ public class RectSprite extends Rectangle{
         
     }
     boolean touchingTop() {
-        boolean b = dy < 1 && vy < 0;
+        boolean b = (dy < 1 && vy < 0);
         return b;
     }
     boolean touchingRight() {
