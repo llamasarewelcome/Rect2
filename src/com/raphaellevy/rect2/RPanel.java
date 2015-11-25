@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JPanel;
 
@@ -18,13 +19,16 @@ import javax.swing.JPanel;
  */
 public class RPanel extends JPanel{
     RVector rsize = new RVector(40,40);
-    
+    ArrayList<RectSprite> list = new ArrayList<>();
     
     public RPanel () {
         super();
-        this.r2 = new RectSprite(250,50 ,(int)rsize.x,(int)rsize.y);
-        r2.vx = -.4;
-        r2.vy = -.4;
+        this.r = new RectSprite(250,50,(int)rsize.x,(int)rsize.y);
+        list.add(r);
+        this.r2 = new RectSprite(250,250 ,(int)rsize.x,(int)rsize.y);
+        list.add(r2);
+        //r2.vx = -.4;
+        //r2.vy = -.4;
         
     }
     @Override
@@ -43,7 +47,7 @@ public class RPanel extends JPanel{
         r2.move();
     }
     
-    RectSprite r = new RectSprite(0,0,(int)rsize.x,(int)rsize.y);
+    RectSprite r;
     RectSprite r2;
     public static double[] cartToPolar(double x, double y) {
         double magnitude = Math.hypot(x, y);
