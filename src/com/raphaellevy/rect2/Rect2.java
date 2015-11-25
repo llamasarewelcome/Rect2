@@ -17,7 +17,7 @@ public class Rect2 {
     // Here be constants
     static final String TITLE = "Hello World";
     static final int[] SIZE = {500,500};
-    
+    static Rect2 r;
     /** Main Window */
     JFrame f;
     /** Main panel */
@@ -25,7 +25,7 @@ public class Rect2 {
     
     /** Main method */
     public static void main(String[] args) throws InterruptedException {
-        Rect2 r = new Rect2();
+        r = new Rect2();
 //        double[] d = new double[] {3.0,4.0};
 //        double[] e = RPanel.cartToPolar(d[0],d[1]);
 //        double[] f = RPanel.polarToCart(e[0], e[1]);

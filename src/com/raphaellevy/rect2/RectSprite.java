@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -17,8 +18,8 @@ import java.util.logging.Logger;
 public class RectSprite extends Rectangle{
     double dx = 0;
     double dy = 0;
-    double vx = .5;
-    double vy = 1;
+    double vx = 0;
+    double vy = 0;
     static final double GRAVITY = .005;
     static final double SLOW = .9999;
     RectSprite(int i, int i0, int i1, int i2) {
@@ -43,6 +44,11 @@ public class RectSprite extends Rectangle{
             if (vy > -.15 && vy < 0) {
                 vy = 0;
             }
+        }
+        if (isColliding()) {
+            vy = -vy;
+            randomize();
+            dy = dy + vy;
         }
         if (touchingTop()) {
             vy = -vy;
@@ -81,6 +87,9 @@ public class RectSprite extends Rectangle{
         vy = RPanel.polarToCart(coords[0], coords[1])[0];
         loseVelocity();
     }
+    boolean collidingBottom() {
+        return false;
+    }
     boolean touchingLeft() {
         boolean a = dx < 1 && vx < 0;
         
@@ -97,7 +106,22 @@ public class RectSprite extends Rectangle{
     }
     boolean touchingBottom() {
         boolean d = dy + this.width >= Rect2.SIZE[1];
-        return d;
+        boolean g = this.isColliding();
+        
+        boolean e = d;
+        return e;
+    }
+
+    private boolean isColliding() {
+        for (RectSprite rect : Rect2.r.p.list) {
+            if (!this.equals(rect)) {
+                if (this.intersects(rect)) {
+                    System.out.println("da");
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
 //boolean b = dy < 1;
