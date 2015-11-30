@@ -32,6 +32,7 @@ public class RectSprite extends Rectangle{
     void move() {
         dx=dx+vx;
         dy=dy+vy;
+        
         if (touchingBottom()) {
             
             vy = -vy;
@@ -44,10 +45,14 @@ public class RectSprite extends Rectangle{
                 vy = 0;
             }
         }
-        if (isColliding()) {
+        RectSprite rect = colliding();
+        if (rect != null) {
+            
             vy = -vy;
+            vx = -vx;
+            dy = dy + 2*vy;
+            dx = dx + 2*vx;
             randomize();
-            dy = dy + vy;
         }
         if (touchingTop()) {
             vy = -vy;
@@ -105,22 +110,22 @@ public class RectSprite extends Rectangle{
     }
     boolean touchingBottom() {
         boolean d = dy + this.width >= Rect2.SIZE[1];
-        boolean g = this.isColliding();
+        
         
         boolean e = d;
         return e;
     }
 
-    private boolean isColliding() {
+    private RectSprite colliding() {
         for (RectSprite rect : Rect2.r.p.list) {
             if (!this.equals(rect)) {
                 if (this.intersects(rect)) {
                     System.out.println("da");
-                    return true;
+                    return rect;
                 }
             }
         }
-        return false;
+        return null;
     }
 }
 //boolean b = dy < 1;

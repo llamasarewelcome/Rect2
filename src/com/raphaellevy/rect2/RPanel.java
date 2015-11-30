@@ -23,9 +23,13 @@ public class RPanel extends JPanel{
     
     public RPanel () {
         super();
-        this.r = new RectSprite(250,50,(int)rsize.x,(int)rsize.y);
+        this.r = new RectSprite(0,0,(int)rsize.x,(int)rsize.y);
+        r.vx = 1;
+        r.vy=1;
         list.add(r);
-        this.r2 = new RectSprite(250,250 ,(int)rsize.x,(int)rsize.y);
+        this.r2 = new RectSprite(450,0 ,(int)rsize.x,(int)rsize.y);
+        r2.vx = -1;
+        r2.vy=1;
         list.add(r2);
         //r2.vx = -.4;
         //r2.vy = -.4;
