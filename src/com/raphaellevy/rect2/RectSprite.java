@@ -50,8 +50,8 @@ public class RectSprite extends Rectangle{
             
             vy = -vy;
             vx = -vx;
-            dy = dy + 2*vy;
-            dx = dx + 2*vx;
+            dy = dy + 4*vy;
+            dx = dx + 4*vx;
             randomize();
         }
         if (touchingTop()) {

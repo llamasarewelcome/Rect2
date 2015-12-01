@@ -28,7 +28,7 @@ public class RPanel extends JPanel{
         r.vy=1;
         list.add(r);
         this.r2 = new RectSprite(450,0 ,(int)rsize.x,(int)rsize.y);
-        r2.vx = -1;
+        r2.vx = -2;
         r2.vy=1;
         list.add(r2);
         //r2.vx = -.4;
