@@ -6,6 +6,8 @@
 package com.raphaellevy.rect2;
 
 import java.awt.Rectangle;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author raffa
  */
-public class RectSprite extends Rectangle{
+public class RectSprite extends Rectangle implements MouseListener{
     double dx = 0;
     double dy = 0;
     double vx = 0;
@@ -126,6 +128,40 @@ public class RectSprite extends Rectangle{
             }
         }
         return null;
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        
+    }
+    boolean timer = false;
+    @Override
+    public void mousePressed(MouseEvent e) {
+        if (!timer) {
+//System.out.println(e.getY());
+            double relx = e.getX() - dx;
+            double rely = e.getY() - dy;
+            double reiq = RPanel.cartToPolar(relx, rely)[1];
+            double nex = RPanel.polarToCart(.5, reiq)[1];
+            double ney = RPanel.polarToCart(.5, reiq)[0];
+            System.out.println(nex);
+            vx += nex;
+            vy += ney;
+            
+        }
+        
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
     }
 }
 //boolean b = dy < 1;
