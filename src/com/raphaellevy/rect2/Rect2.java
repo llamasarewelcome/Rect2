@@ -5,6 +5,10 @@
  */
 package com.raphaellevy.rect2;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GraphicsDevice;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -16,7 +20,15 @@ import javax.swing.JFrame;
 public class Rect2 {
     // Here be constants
     static final String TITLE = "Hello World";
-    static int[] SIZE = {200,500};
+    static int[] SIZE;
+    static {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        double width = screenSize.getWidth();
+        double height = screenSize.getHeight();
+        Rect2.SIZE = new int[] {(int)width,(int)height};
+        
+    }
+    
     static Rect2 r;
     /** Main Window */
     JFrame f;
@@ -38,13 +50,20 @@ public class Rect2 {
     
     /** Set up app */
     public void setup() {
+        
         f = new JFrame(TITLE);
+        f.setUndecorated(true);
+        f.setBackground(new Color(0, 0, 0, 0));
         f.setSize(SIZE[0], SIZE[1]);
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         p = new RPanel();
+        p.setBackground(new Color(0, 0, 0, 0));
         p.setSize(SIZE[0], SIZE[1]);
         f.add(p);
+        GraphicsDevice g = f.getGraphicsConfiguration().getDevice();
+        
+        //g.setFullScreenWindow(f);
         
         
     }

@@ -41,7 +41,7 @@ public class RPanel extends JPanel{
     public void paint(Graphics g1) {
         Graphics2D g = (Graphics2D) g1;
         g.setColor(Color.WHITE);
-        g.fillRect(0, 0, Rect2.SIZE[0], Rect2.SIZE[1]);
+        //g.fillRect(0, 0, Rect2.SIZE[0], Rect2.SIZE[1]);
         g.setColor(Color.RED);
         g.fillOval(r.x, r.y, r.width, r.height);
         g.setColor(Color.BLUE);
