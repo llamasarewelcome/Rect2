@@ -16,7 +16,7 @@ import javax.swing.JFrame;
 public class Rect2 {
     // Here be constants
     static final String TITLE = "Hello World";
-    static final int[] SIZE = {500,500};
+    static int[] SIZE = {200,500};
     static Rect2 r;
     /** Main Window */
     JFrame f;
@@ -51,7 +51,12 @@ public class Rect2 {
     
     /** Main loop */
     public void loop() throws InterruptedException {
-        while (true) {            
+        while (true) {  
+            Rect2.SIZE[0] = f.getSize().width;
+            Rect2.SIZE[1] = f.getSize().height;
+            if (!p.getSize().equals(f.getSize())) {
+                p.setSize(f.getSize());
+            }
             p.move();
             p.repaint();
             

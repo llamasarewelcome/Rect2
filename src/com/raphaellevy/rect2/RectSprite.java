@@ -142,8 +142,8 @@ public class RectSprite extends Rectangle implements MouseListener{
             double relx = e.getX() - dx;
             double rely = e.getY() - dy;
             double reiq = RPanel.cartToPolar(relx, rely)[1];
-            double nex = RPanel.polarToCart(.5, reiq)[1];
-            double ney = RPanel.polarToCart(.5, reiq)[0];
+            double nex = RPanel.polarToCart(2, reiq)[1];
+            double ney = RPanel.polarToCart(2, reiq)[0];
             System.out.println(nex);
             vx += nex;
             vy += ney;
