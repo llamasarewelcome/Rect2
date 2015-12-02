@@ -122,7 +122,6 @@ public class RectSprite extends Rectangle implements MouseListener{
         for (RectSprite rect : Rect2.r.p.list) {
             if (!this.equals(rect)) {
                 if (this.intersects(rect)) {
-                    System.out.println("da");
                     return rect;
                 }
             }
