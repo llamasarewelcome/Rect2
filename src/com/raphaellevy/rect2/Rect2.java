@@ -35,6 +35,7 @@ public class Rect2 {
         r.loop();
         
     }
+    private volatile boolean paused;
     
     /** Set up app */
     public void setup() {
@@ -42,26 +43,56 @@ public class Rect2 {
         f.setSize(SIZE[0], SIZE[1]);
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        p = new RPanel();
+        p = new RPanel(this);
         p.setSize(SIZE[0], SIZE[1]);
         f.add(p);
         
         
     }
-    
+    public void pause() {
+        paused = true;
+    }
+    public void play() throws InterruptedException {
+        if (!paused) {
+            paused = false;
+            
+        }
+    }
+    public void toggle() throws InterruptedException {
+        if (paused) {
+            
+            paused = false;
+            
+            
+        } else {
+            paused = true;
+        }
+    }
+    public boolean isPaused() {
+        return paused;
+    }
+    public boolean isPlaying() {
+        return !paused;
+    }
     /** Main loop */
-    public void loop() throws InterruptedException {
-        while (true) {  
-            Rect2.SIZE[0] = f.getSize().width;
-            Rect2.SIZE[1] = f.getSize().height;
-            if (!p.getSize().equals(f.getSize())) {
-                p.setSize(f.getSize());
+    public void loop() {
+        while (true) {
+            while (!paused) {
+                
+                Rect2.SIZE[0] = f.getSize().width;
+                Rect2.SIZE[1] = f.getSize().height;
+                if (!p.getSize().equals(f.getSize())) {
+                    p.setSize(f.getSize());
+                }
+                p.move();
+                p.repaint();
+                
+                try {
+                    Thread.sleep(3);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Rect2.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-            p.move();
-            p.repaint();
-            
-            
-            Thread.sleep(3);
             
         }
     }

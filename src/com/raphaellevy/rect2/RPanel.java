@@ -9,8 +9,12 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
@@ -20,9 +24,35 @@ import javax.swing.JPanel;
 public class RPanel extends JPanel{
     RVector rsize = new RVector(40,40);
     ArrayList<RectSprite> list = new ArrayList<>();
-    
-    public RPanel () {
+    Rect2 rec;
+    public RPanel (final Rect2 rec) {
         super();
+        this.rec = rec;
+        this.setFocusable(true);
+        requestFocus();
+        addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                System.out.println("adfd");
+                if (e.getKeyChar() == ' ') {
+                    System.out.println("adf");
+                    try {
+                        rec.toggle();
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(RPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }  
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
         this.r = new RectSprite(0,0,(int)rsize.x,(int)rsize.y);
         r.vx = 1;
         r.vy=1;
@@ -65,4 +95,6 @@ public class RPanel extends JPanel{
         double y = magnitude * Math.sin(theta);
         return new double[] {x,y};
     }
+
+    
 }
