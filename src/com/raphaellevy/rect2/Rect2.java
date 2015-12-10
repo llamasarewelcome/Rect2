@@ -23,6 +23,7 @@ public class Rect2 {
     /** Main panel */
     RPanel p;
     
+    RInfoWindow w;
     /** Main method */
     public static void main(String[] args) throws InterruptedException {
         r = new Rect2();
@@ -46,7 +47,9 @@ public class Rect2 {
         p = new RPanel(this);
         p.setSize(SIZE[0], SIZE[1]);
         f.add(p);
-        
+        w = RInfoWindow.openWindow("hihi");
+        w.getFrame().setLocation(500, 0);
+        f.toFront();
         
     }
     public void pause() {
