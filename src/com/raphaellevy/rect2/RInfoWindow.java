@@ -5,6 +5,8 @@
  */
 package com.raphaellevy.rect2;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,6 +23,8 @@ public class RInfoWindow extends JPanel{
     private JFrame frame;
     
     JLabel l1;
+    JButton b1;
+    JButton b2;
     
     private RInfoWindow() {
         super();
@@ -40,10 +44,31 @@ public class RInfoWindow extends JPanel{
         
         w.l1 = new JLabel();
         w.l1.setText("0,0");
-        
         w.add(w.l1);
         
-        w.repaint();
+        w.b1 = new JButton("Reset Velocity!!!!");
+        w.b1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Rect2.r.p.r.vx = 0;
+                Rect2.r.p.r.vy = 0;
+            }
+        });
+        w.add(w.b1);
+        
+        w.b2 = new JButton("Reset All Velocities!");
+        w.b2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Rect2.r.p.r.vx = 0;
+                Rect2.r.p.r.vy = 0;
+                Rect2.r.p.r2.vx = 0;
+                Rect2.r.p.r2.vy = 0;
+            }
+        });
+        w.add(w.b2);
+        w.revalidate();
+        //w.repaint();
         return w;
     }
 
