@@ -8,6 +8,7 @@ package com.raphaellevy.rect2;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
@@ -99,13 +101,14 @@ public class RPanel extends JPanel{
     public void paint(Graphics g1) {
         Graphics2D g = (Graphics2D) g1;
         g.setColor(Color.WHITE);
-        g.fillRect(0, 0, Rect2.SIZE[0], Rect2.SIZE[1]);
+        //g.fillRect(0, 0, Rect2.SIZE[0], Rect2.SIZE[1]);
         g.setColor(Color.RED);
         g.fillOval(r.x, r.y, r.width, r.height);
         g.setColor(Color.BLUE);
         g.fillOval(r2.x, r2.y, r2.width, r2.height);
         g.setColor(Color.red);
-        g.fill(close);
+        //g.fill(close);
+        g.drawImage(new ImageIcon(this.getClass().getResource("/com/raphaellevy/rect2/resources/close_button.png")).getImage(), 5, 5, 10, 10, this);
     }
     
     public void move() {
