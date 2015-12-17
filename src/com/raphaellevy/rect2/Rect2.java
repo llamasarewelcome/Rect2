@@ -5,6 +5,7 @@
  */
 package com.raphaellevy.rect2;
 
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -42,14 +43,17 @@ public class Rect2 {
     public void setup() {
         f = new JFrame(TITLE);
         f.setSize(SIZE[0], SIZE[1]);
+        f.setUndecorated(false);
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         p = new RPanel(this);
         p.setSize(SIZE[0], SIZE[1]);
+        p.setBackground(new Color(0,0,0,0));
         f.add(p);
         w = RInfoWindow.openWindow("hihi");
         w.getFrame().setLocation(500, 0);
         f.toFront();
+        
         
     }
     public void pause() {
