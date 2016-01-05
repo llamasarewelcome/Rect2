@@ -5,12 +5,14 @@
  */
 package com.raphaellevy.rect2;
 
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import quicktime.qd3d.math.Point2D;
 
 /**
  *
@@ -121,7 +123,7 @@ public class RectSprite extends Rectangle implements MouseListener{
     private RectSprite colliding() {
         for (RectSprite rect : Rect2.r.p.list) {
             if (!this.equals(rect)) {
-                if (this.intersects(rect)) {
+                if (Point.distance(this.getCenterX(), this.getCenterY(), rect.getCenterX(), rect.getCenterY()) < this.getWidth()/2+rect.getWidth()/2) {
                     return rect;
                 }
             }
